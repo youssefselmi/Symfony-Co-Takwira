@@ -1,0 +1,25 @@
+{% extends 'template/match.html.twig' %}
+
+{% block title %}New Joueur{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+
+                        <div class="card">
+    <div class="card-header card-header-primary">
+        <h3 class="card-title ">ajouter joueur </h3>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {{ include('joueur/_form.html.twig') }}
+
+    <a href="{{ path('joueur_index') }}">back to list</a>
+
+{% endblock %}

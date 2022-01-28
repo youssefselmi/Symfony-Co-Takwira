@@ -1,0 +1,49 @@
+
+{% block title %}Entrainement{% endblock %}
+
+{% block body %}
+    <h1>Entrainement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdEntrainement</th>
+                <td>{{ entrainement.idEntrainement }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ entrainement.duree }}</td>
+            </tr>
+            <tr>
+                <th>DateEntrainement</th>
+                <td>{{ entrainement.dateEntrainement ? entrainement.dateEntrainement|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ entrainement.heure }}</td>
+            </tr>
+            <tr>
+                <th>IdCoach</th>
+                <td>{{ entrainement.idCoach }}</td>
+            </tr>
+            <tr>
+                <th>IdStade</th>
+                <td>{{ entrainement.idStade }}</td>
+            </tr>
+            <tr>
+                <th>IdEquipe</th>
+                <td>{{ entrainement.idEquipe }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ entrainement.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('entrainement_index') }}">back to list</a>
+
+    <a href="{{ path('entrainement_edit', {'idEntrainement': entrainement.idEntrainement}) }}">edit</a>
+
+    {{ include('entrainement/_delete_form.html.twig') }}
+{% endblock %}

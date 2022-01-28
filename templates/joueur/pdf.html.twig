@@ -1,0 +1,90 @@
+
+
+{% block body %}
+
+
+    <h1 style="text-align: center"> Liste des joueurs </h1>
+    <br>
+
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            #customers {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 50%;
+            }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 2px;
+            }
+
+            #customers tr:nth-child(even){background-color: #FFC0CB	;}
+
+            #customers tr:hover {background-color: #ddd;}
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: #87CEEB;
+                color: white;
+            }
+        </style>
+    </head>
+
+
+
+<table border ="1" id="customers" width="60%" height="120" >
+    <tr>
+
+        <th scope="row">IdJoueur</th>
+        <th scope="row">NomJoueur</th>
+        <th scope="row">PrenomJoueur</th>
+        <th scope="row">DateNaissance</th>
+        <th scope="row">Age</th>
+        <th scope="row">numero</th>
+        <th scope="row">AdresseMail</th>
+        <th scope="row">ville</th>
+
+        <th scope="row">categorie</th>
+        <th scope="row">position</th>
+        <th scope="row">Nom Equipe</th>
+        <th scope="row">image</th>
+        <th scope="row">password</th>
+
+
+
+
+    </tr>
+    <tbody id="all">
+    {% for joueur in joueur %}
+        <tr>
+            <td>{{ joueur.idJoueur }}</td>
+            <td>{{ joueur.nomJoueur }}</td>
+            <td>{{ joueur.prenomJoueur }}</td>
+            <td>{{ joueur.dateNaissance ? joueur.dateNaissance|date('Y-m-d') : '' }}</td>
+            <td>{{ joueur.ageJoueur }}</td>
+            <td>{{ joueur.numero  }}</td>
+            <td>{{ joueur.adresseMail }}</td>
+            <td>{{ joueur.ville }}</td>
+
+            <td>{{ joueur.categorie }}</td>
+$            <td>{{ joueur.position }}</td>
+            <td>{{ joueur.idEquipe.nomEquipe }}</td>
+            <td> <img src="{{  asset('uploads/images/' ~ joueur.image)}}" alt="" style="width: 100px;height:100px"> </td>
+            <td>{{ joueur.password }}</td>
+
+        </tr>
+
+
+    {%endfor%}
+
+
+
+
+{% endblock %}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Coach" table="coach">
+    <id name="idCoach" type="integer" column="id_coach">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomCoach" type="string" column="nom_coach" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prenomCoach" type="string" column="prenom_coach" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dateNaissance" type="date" column="date_naissance" nullable="false"/>
+    <field name="grade" type="string" column="grade" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dateFinContrat" type="date" column="date_fin_contrat" nullable="false"/>
+    <field name="adresseMail" type="string" column="adresse_mail" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="salaire" type="float" column="salaire" precision="10" scale="0" nullable="false"/>
+    <field name="nbTropheLocaux" type="integer" column="nb_trophe_locaux" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nbTropheInternationaux" type="integer" column="nb_trophe_internationaux" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="formationPrefere" type="string" column="formation_prefere" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imageFormation" type="string" column="image_formation" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imageCoach" type="string" column="image_coach" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="age" type="integer" column="age" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mdpCoach" type="string" column="mdp_coach" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,18 @@
+{% extends 'template/match.html.twig' %}
+
+{% block title %}New Equipe{% endblock %}
+
+{% block body %}
+<div class="card">
+
+    <div class="card-header card-header-primary">
+        <h3 class="card-title ">Create new Equipe </h3>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+</div>
+    {{ include('equipe/_form.html.twig') }}
+
+    <a href="{{ path('equipe_index') }}">back to list</a>
+
+
+{% endblock %}

@@ -1,0 +1,77 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>
+        PDF
+    </title>
+</head>
+<body>
+<div class="page-content bg-white">
+    <div class="content-block">
+        <!-- Browse Jobs -->
+        <div class="section-full browse-job p-b50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-8 col-md-7">
+                        <ul class="post-job-bx">
+                            <h2>Liste des matchs</h2>
+                            {% for index in c %}
+
+                                    <li>
+                                        <div class="post-bx">
+                                            <div class="d-flex m-b30">
+                                                <div class="job-post-info">
+                                                    <h4>
+                                                        <a href="">
+                                                             ****************
+                                                        </a>
+                                                    </h4>
+                                                    <ul>
+                                                        <li>
+                                                            <i class="fa fa-map-marker"></i>
+                                                            Stade : {{ index.idStade.nomStade }}
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-bookmark-o"></i>
+                                                            Description : {{ index.description }}
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-bookmark-o"></i>
+                                                            Date : {{ index.date|date() }}
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-bookmark-o"></i>
+                                                            Heure Début : {{ index.heureDeb }}
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-bookmark-o"></i>
+                                                            Heure Fin : {{ index.heureFin }}
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-bookmark-o"></i>
+                                                            Score : {{ index.score }}
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="job-time mr-auto">
+
+                                                </div>
+
+                                                </div>
+                                            </div>
+
+                                    </li>
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

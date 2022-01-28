@@ -1,0 +1,74 @@
+
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+    <h1>Reclamation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idrec</th>
+                <td>{{ reclamation.idrec }}</td>
+            </tr>
+            <tr>
+                <th>Idjoueur</th>
+                <td>{{ reclamation.idjoueur }}</td>
+            </tr>
+            <tr>
+                <th>Sujetrec</th>
+                <td>{{ reclamation.sujetrec }}</td>
+            </tr>
+            <tr>
+                <th>Descriptionrec</th>
+                <td>{{ reclamation.descriptionrec }}</td>
+            </tr>
+            <tr>
+                <th>Statusrec</th>
+                <td>{{ reclamation.statusrec }}</td>
+            </tr>
+            <tr>
+                <th>Daterec</th>
+                <td>{{ reclamation.daterec ? reclamation.daterec|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datetraitement</th>
+                <td>{{ reclamation.datetraitement ? reclamation.datetraitement|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nomprenomcoach</th>
+                <td>{{ reclamation.nomprenomcoach }}</td>
+            </tr>
+            <tr>
+                <th>Nomjoueur</th>
+                <td>{{ reclamation.nomjoueur }}</td>
+            </tr>
+            <tr>
+                <th>Prenomjoueur</th>
+                <td>{{ reclamation.prenomjoueur }}</td>
+            </tr>
+            <tr>
+                <th>Emailjoueur</th>
+                <td>{{ reclamation.emailjoueur }}</td>
+            </tr>
+            <tr>
+                <th>Tljoueur</th>
+                <td>{{ reclamation.tljoueur }}</td>
+            </tr>
+            <tr>
+                <th>Imgrec</th>
+                <td>{{ reclamation.imgrec }}</td>
+            </tr>
+            <tr>
+                <th>Opened</th>
+                <td>{{ reclamation.opened }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reclamation_index') }}">back to list</a>
+
+    <a href="{{ path('reclamation_edit', {'idrec': reclamation.idrec}) }}">edit</a>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+{% endblock %}

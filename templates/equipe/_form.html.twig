@@ -1,0 +1,39 @@
+
+<style>
+    .form-error {
+        color:red;
+    }
+    Cod
+
+</style>
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+<div class="col-md-3">
+    <div class="form-group">
+        <label class="bmd-label-floating">    {{ form_label(form.nomEquipe) }}
+        </label>
+        <input type="text" class="form-control" {{ form_widget(form.nomEquipe) }}
+
+        <div class="form-error">
+            {{ form_errors(form.nomEquipe) }}
+        </div>
+    </div>
+
+</div>
+<div class="col-md-3">
+
+    <div class="form-group">
+        <label class="bmd-label-floating">    {{ form_label(form.idCoach) }}
+        </label>
+        <select type="text" class="form-control" {{ form_widget(form.idCoach) }}
+
+    </div>
+</div>
+
+
+    {{ form_widget(form) }}
+
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
+

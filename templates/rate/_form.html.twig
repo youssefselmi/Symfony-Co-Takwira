@@ -1,0 +1,23 @@
+
+
+{{ form_start(form) }}
+<div class="tg-filterbale-nav option-set">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+		<div class="testboxRating">
+			<br>
+			<label id="icon" for="name">
+				<i class="icon-user"></i>
+			</label>
+			<input type="text" name="name" id="name" placeholder="nomequipe ⚽" disabled required/>
+			{{ form_widget(form.nomequipe)}}
+			<br>
+			<h4>Rating </h4>
+			{{ form_widget(form.rate, { 'attr':{ 'style': 'height:60pt'} })}}
+		
+			<br>
+<br>
+			<button class="tg-btn ">{{ button_label|default('Save') }}</button>
+		</div>
+</div>
+{{ form_end(form) }}

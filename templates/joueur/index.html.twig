@@ -1,0 +1,160 @@
+{% extends 'template/match.html.twig' %}
+
+{% block title %}Joueur index{% endblock %}
+
+{% block body %}
+    <div class=" dropdown-menu-right">
+
+        <a href="{{ path('joueur_new') }}" data-toggle="dropdown-menu-right">
+            <i class="fa fa-plus-circle fa-2x"> </i>
+        </a>
+    </div>
+<div class="card">
+    <div class="card-header card-header-primary">
+
+        <h3 class="card-title ">Liste des joueurs </h3>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+</div>
+
+    <div id="divs">
+        <input type="text" id="search" placeholder="recherche par nom">
+        <input type="text" id="search2" placeholder="recherche par age">
+    </div>
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+
+
+    <table id="t" class="table" >
+        <thead>
+            <tr>
+                <th>IdJoueur</th>
+                <th>NomJoueur</th>
+                <th>PrenomJoueur</th>
+                <th>DateNaissance</th>
+                <th>AgeJoueur</th>
+                <th>Numero</th>
+                <th>AdresseMail</th>
+                <th>Ville</th>
+                <th>Categorie</th>
+                <th>Position</th>
+                <th>IdEquipe</th>
+                <th>Image</th>
+                <th>Password</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="all">
+        {% for joueur in joueurs %}
+            <tr>
+
+
+
+                <td>{{ joueur.idJoueur }}</td>
+                <td>{{ joueur.nomJoueur }}</td>
+                <td>{{ joueur.prenomJoueur }}</td>
+                <td>{{ joueur.dateNaissance ? joueur.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ joueur.ageJoueur }}</td>
+                <td>{{ joueur.numero }}</td>
+                <td>{{ joueur.adresseMail }}</td>
+                <td>{{ joueur.ville }}</td>
+                <td>{{ joueur.categorie }}</td>
+                <td>{{ joueur.position }}</td>
+                <td>{{ joueur.idEquipe.nomEquipe }}</td>
+                <td> <img src="{{ asset('uploads/images/' ~ joueur.image ) }} " alt="" style="width: 80px; height: 80px"> </td>
+                <td>{{ joueur.password }}</td>
+                <td>
+                    <a href="{{ path('joueur_show', {'idJoueur': joueur.idJoueur}) }}">show</a>
+
+                    <a href="{{ path('joueur_edit', {'idJoueur': joueur.idJoueur}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+
+  }
+
+        </tbody>
+
+        <tbody id="search"></tbody>
+    </table>
+      <a href="{{ path('pdfyasmine') }}">new pdf</a>
+    <a href="{{ path('joueur_new') }}">Create new</a>
+
+    {{ knp_pagination_render(joueurs) }}
+
+
+
+    <div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        </script>
+        <script>
+            $( document ).ready(function() {
+
+                /*begin rechercher avancee multicritéres selon sujet et staus*/
+                $("#divs").keyup(function(e){
+                    /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                    var value = $("#search").val();
+                    var value2 = $("#search2").val();
+                    if(value.length >= 2 || value.length == 0 || value2.length >= 2 || value2.length == 0  )
+                    {
+
+                        //    alert(value);
+                        /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                        $.ajax({
+                            /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                            url : "{{ path('search_joueure') }}",
+                            /* La méthode utilisée pour transférer les données est GET */
+                            type : 'GET',
+                            /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                            data: {
+                                'searchValue' : value,
+                                'searchValue2': value2
+                            },
+                            /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                            success : function(retour){
+                                if(retour){
+                                    $('#t tbody#search').empty();
+                                    $.each(JSON.parse(retour), function(i, obj) {
+                                        $('#t tbody#all').hide();
+
+                                        $('#t tbody#search').append('<tr><td> '+obj.idJoueur+'  </td><td>    '+obj.nomJoueur+'  </td><td>'+obj.prenomJoueur+' </td> <td>'+obj.dateNaissance.substring(0,10)+' </td>   <td>'+obj.ageJoueur +' </td> <td>'+obj.numero+' </td>  <td>'+obj.adresseMail+' </td> <td>'+obj.ville +' </td> </td> <td>'+obj.categorie +' </td>  <td>'+obj.idEquipe +' </td> <td>'+obj.position +' </td> <td><img  src="/uploads/images/ '+obj.image+ '" alt="" style="width: 50px;height: 50px"></td>   <td>'+obj.password +' </td>  <td> <a href="/joueur/'+obj.idJoueur+'/edit">edit</a></td></tr>');
+                                    });
+                                }
+                                else
+                                {
+                                    $('#t tbody#all').show();
+                                    $('#t tbody#search').empty();
+                                    $('#t tbody#search').fadeIn('fast');
+                                }
+                            },
+                        });
+                        return false;
+                    }
+                });
+
+            });
+            /*end rechercher avancee multicritéres selon sujet et staus*/
+        </script>
+
+
+
+
+    </div>
+
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,765 @@
+<!doctype html>
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zxx"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang="zxx"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9" lang="zxx"> <![endif]-->
+<!--[if gt IE 8]><!-->	<html class="no-js" lang="zxx"> <!--<![endif]-->
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Co-Takwira</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="{{asset('apple-touch-icon.png') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/transitions.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/prettyPhoto.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/customScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/color.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+
+    <div id="tg-navigationm-mobile" class="tg-navigationm-mobile tg-navigation collapse navbar-collapse">
+        <span id="tg-close" class="tg-close fa fa-close"></span>
+        <div class="tg-colhalf">
+            <ul>
+                <li>
+                    <a href="#">Main</a>
+                    <ul class="tg-dropdown-menu">
+                        <li><a href="index-2.html">home1</a></li>
+                        <li><a href="index2.html">home2</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#">team</a>
+                    <ul class="tg-dropdown-menu">
+                        <li><a href="playergrid-v1.html">playergrid-v1</a></li>
+                        <li><a href="playergrid-v2.html">playergrid-v2</a></li>
+                        <li class="active"><a href="playerdetail.html">playergrid detail</a></li>
+                    </ul>
+                </li>
+                <li><a href="buyticket.html">Buy Tickets</a></li>
+                <li>
+                    <a href="#">Match Results</a>
+                    <ul class="tg-dropdown-menu">
+                        <li>
+                            <a href="#">Match Results</a>
+                            <ul class="tg-dropdown-menu">
+                                <li><a href="{{ path('templatefrontmatchresult') }}">match result</a></li>
+                                <li><a href="{{ path('matchOrg') }}">match organisé</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="tg-colhalf">
+            <ul>
+                <li>
+                    <a href="#">fixtures</a>
+                    <ul class="tg-dropdown-menu">
+                        <li><a href="fixtures.html">fixtures</a></li>
+                        <li><a href="fixturedetail.html">fixture detail</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">pro soccer media</a>
+                    <ul class="tg-dropdown-menu">
+                        <li><a href="soccermedia-1.html">pro soccer media1</a></li>
+                        <li><a href="soccermedia-2.html">pro soccer media2</a></li>
+                    </ul>
+                </li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li>
+                    <a href="#"><i class=" fa fa-navicon"></i></a>
+                    <ul>
+                        <li><a href="aboutus.html">about us</a></li>
+                        <li><a href="shoplist.html">shop list</a></li>
+                        <li><a href="shopgrid.html">shop grid</a></li>
+                        <li><a href="productsingle.html">shop detail</a></li>
+                        <li><a href="bloglist.html">blog list</a></li>
+                        <li><a href="bloggrid.html">blog grid</a></li>
+                        <li><a href="blogdetail.html">blog detail</a></li>
+                        <li><a href="404.html">404 error</a></li>
+                        <li><a href="comming-soon.html">comming soon</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <header id="tg-header" class="tg-header tg-haslayout">
+        <div class="container">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="tg-topbar tg-haslayout">
+                        <nav id="tg-topaddnav" class="tg-topaddnav">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tg-addnavigationm-mobile">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div id="tg-addnavigationm-mobile" class="tg-addnavigationm-mobile collapse navbar-collapse">
+                                <div class="tg-colhalf pull-right">
+                                    <nav class="tg-addnav">
+                                        <ul>
+                                            <li><a href="javascript().html" data-toggle="modal" data-target="#tg-login">login</a></li>
+                                            <li><a href="javascript().html" data-toggle="modal" data-target="#tg-register">Register</a></li>
+                                            <li>
+                                                <div class="tg-cart">
+                                                    <a href="javascript:void(0)" class="dropdown-toggle" id="tg-cartdropdown" data-toggle="dropdown">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                    <div class="tg-cartcontent dropdown-menu" aria-labelledby="tg-cartdropdown">
+                                                        <ul>
+                                                            <li>
+                                                                <figure>
+                                                                    <a href="#">
+                                                                        <img src="{{ asset('images/thumbnails/img-01.jpg') }}" alt="image description">
+                                                                    </a>
+                                                                </figure>
+                                                                <div class="tg-product-detail">
+                                                                    <h3><a href="#">Smooth 3-Stripes Scarf</a></h3>
+                                                                    <span class="tg-price">Price: $23</span>
+                                                                    <a class="tg-delete" href="#"></a>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <figure>
+                                                                    <a href="#">
+                                                                        <img src="{{ asset('images/thumbnails/img-02.jpg')}}" alt="image description">
+                                                                    </a>
+                                                                </figure>
+                                                                <div class="tg-product-detail">
+                                                                    <h3><a href="#">Smooth 3-Stripes Scarf</a></h3>
+                                                                    <span class="tg-price">Price: $23</span>
+                                                                    <a class="tg-delete" href="#"></a>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <figure>
+                                                                    <a href="#">
+                                                                        <img src="{{ asset('images/thumbnails/img-03.jpg') }}" alt="image description">
+                                                                    </a>
+                                                                </figure>
+                                                                <div class="tg-product-detail">
+                                                                    <h3><a href="#">Smooth 3-Stripes Scarf</a></h3>
+                                                                    <span class="tg-price">Price: $23</span>
+                                                                    <a class="tg-delete" href="#"></a>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="tg-btnbox">
+                                                                    <strong class="tg-carttotal">Total: $134</strong>
+                                                                    <a class="tg-btn" href="#"><span>checkout</span></a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a id="tg-btn-search" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="tg-colhalf">
+                                    <ul class="tg-socialicons">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-dribbble"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <nav id="tg-nav" class="tg-nav brand-center">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tg-navigationm-mobile">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <strong class="tg-logo">
+                                <a href="index-2.html"><img src="{{ asset('images/logo.png }}')}}" alt="image description"></a>
+                            </strong>
+                        </div>
+                        <div id="tg-navigation" class="tg-navigation">
+                            <div class="tg-colhalf">
+                                <ul>
+                                    <li>
+                                        <a href="#">Main</a>
+                                        <ul class="tg-dropdown-menu">
+                                            <li><a href="index-2.html">home1</a></li>
+                                            <li><a href="index2.html">home2</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#">team</a>
+                                        <ul class="tg-dropdown-menu">
+                                            <li><a href="playergrid-v1.html">playergrid-v1</a></li>
+                                            <li><a href="playergrid-v2.html">playergrid-v2</a></li>
+                                            <li class="active"><a href="playerdetail.html">playergrid detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="buyticket.html">Buy Tickets</a></li>
+                                    <li>
+                                        <a href="#">Match Results</a>
+                                        <ul class="tg-dropdown-menu">
+                                            <li><a href="{{ path('templatefrontmatchresult') }}">match result</a></li>
+                                            <li><a href="{{ path('matchOrg') }}">match organisé</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tg-colhalf">
+                                <ul>
+                                    <li>
+                                        <a href="#">fixtures</a>
+                                        <ul class="tg-dropdown-menu">
+                                            <li><a href="fixtures.html">fixtures</a></li>
+                                            <li><a href="fixturedetail.html">fixture detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">pro soccer media</a>
+                                        <ul class="tg-dropdown-menu">
+                                            <li><a href="soccermedia-1.html">pro soccer media1</a></li>
+                                            <li><a href="soccermedia-2.html">pro soccer media2</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contactus.html">Contact</a></li>
+                                    <li>
+                                        <a href="#"><i class=" fa fa-navicon"></i></a>
+                                        <ul>
+                                            <li><a href="aboutus.html">about us</a></li>
+                                            <li><a href="shoplist.html">shop list</a></li>
+                                            <li><a href="shopgrid.html">shop grid</a></li>
+                                            <li><a href="productsingle.html">shop detail</a></li>
+                                            <li><a href="bloglist.html">blog list</a></li>
+                                            <li><a href="bloggrid.html">blog grid</a></li>
+                                            <li><a href="blogdetail.html">blog detail</a></li>
+                                            <li><a href="404.html">404 error</a></li>
+                                            <li><a href="comming-soon.html">comming soon</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="tg-banner tg-haslayout">
+        <div class="tg-imglayer">
+            <img src="{{ asset('images/bg-pattran.png') }}" alt="image desctription">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="tg-banner-content tg-haslayout">
+                    <div class="tg-pagetitle">
+                        <h1>match Detail</h1>
+                    </div>
+                    <ol class="tg-breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">match Detail</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="tg-main" class="tg-main tg-haslayout">
+        <div class="container">
+            <div class="row">
+                <div id="tg-twocolumns" class="tg-twocolumns tg-main-section tg-haslayout">
+                    <div class="col-sm-9 col-xs-12 pull-left">
+                        <div class="tg-player-detail tg-haslayout">
+                            <div class="tg-player-data tg-haslayout">
+                                <div class="tg-player-info tg-haslayout">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-xs-12">
+                                            <div class="tg-widget tg-imagewidget">
+                                                <figure>
+                                                    <img src="{{ asset('uploads/foot.jpg') }}" alt="image description">
+                                                </figure>
+                                            </div>
+                                            <div class="tg-widget tg-mapwidget">
+                                                <div id="tg-map" class="tg-map tg-haslayout">
+                                               <!--     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.196388026009!2d144.9584250158674!3d-37.808868741537424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d34d2754a9f%3A0xad27583c2c9e2890!2sElizabeth+St%2C+Melbourne+VIC+3000%2C+Australia!5e0!3m2!1sen!2s!4v1468220698916"></iframe>-->
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-8 col-xs-12">
+                                            <div class="tg-playcontent">
+                                                <a href="#" class="tg-theme-tag">Match</a>
+                                                <h3><a href="#">Vote </a></h3>
+
+
+                                                <form method="post">
+                                                    <div class="row col-6 d-flex justify-content-center">
+
+                                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+
+                                                            <style>
+                                                                .rating {
+                                                                    display: inline-block;
+                                                                    position: relative;
+                                                                    height: 50px;
+                                                                    line-height: 50px;
+                                                                    font-size: 50px;
+                                                                }
+
+                                                                .rating label {
+                                                                    position: absolute;
+                                                                    top: 0;
+                                                                    left: 0;
+                                                                    height: 100%;
+                                                                    cursor: pointer;
+                                                                }
+
+                                                                .rating label:last-child {
+                                                                    position: static;
+                                                                }
+
+                                                                .rating label:nth-child(1) {
+                                                                    z-index: 5;
+                                                                }
+
+                                                                .rating label:nth-child(2) {
+                                                                    z-index: 4;
+                                                                }
+
+                                                                .rating label:nth-child(3) {
+                                                                    z-index: 3;
+                                                                }
+
+                                                                .rating label:nth-child(4) {
+                                                                    z-index: 2;
+                                                                }
+
+                                                                .rating label:nth-child(5) {
+                                                                    z-index: 1;
+                                                                }
+
+                                                                .rating label input {
+                                                                    position: absolute;
+                                                                    top: 0;
+                                                                    left: 0;
+                                                                    opacity: 0;
+                                                                }
+
+                                                                .rating label .icon {
+                                                                    float: left;
+                                                                    color: transparent;
+                                                                }
+
+                                                                .rating label:last-child .icon {
+                                                                    color: #000000;
+                                                                }
+
+                                                                .rating:not(:hover) label input:checked ~ .icon,
+                                                                .rating:hover label:hover input ~ .icon {
+                                                                    color: #2e55fa;
+                                                                }
+
+                                                                .rating label input:focus:not(:checked) ~ .icon:last-child {
+                                                                    color: #000000;
+                                                                    text-shadow: 0 0 5px #2e55fa;
+                                                                }
+                                                            </style>
+
+                                                            <div class="rating">
+                                                                <label>
+                                                                    <input type="radio" name="stars" value="1" />
+                                                                    <span class="icon">★</span>
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="stars" value="2" />
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="stars" value="3" />
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" name="stars" value="4" />
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                </label>
+                                                                <label>
+
+                                                                    <input type="radio" name="stars" value="5" />
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                    <span class="icon">★</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-4">
+                                                            <div class="d-flex justify-content-center">
+
+
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    Voter
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <ul>
+                                                <li>ID Match :</li>
+                                                <li>{{ idMatch }}</li>
+                                                <li> Equipe 1 :</li>
+                                                <li>{{ idEquipe1.nomEquipe }}</li>
+                                                <li>Equipe 2</li>
+                                                <li>{{ idEquipe2.nomEquipe }}</li>
+                                                <li> Stade </li>
+                                                <li>{{ idStade.nomStade }}</li>
+                                                <li>Date</li>
+                                                <li>{{ date|date() }}</li>
+                                                <li>Heure début Match</li>
+                                                <li>{{heureDeb }}</li>
+                                                <li>Heure fin Match</li>
+                                                <li>{{ heureFin }}</li>
+                                                <li>Status</li>
+                                                <li>{{ status }}</li>
+                                                <li>Score</li>
+                                                <li>{{ score }}</li>
+                                                <li>Nombre de Spectateur</li>
+                                                <li>{{ nbSpectateur }}</li>
+                                                <li>
+                                                    <ul class="tg-socialicons">
+                                                        <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tg-player-description tg-haslayout">
+                                    <div class="tg-description">
+                                        <img class="tg-alignleft" src="{{ asset('images/player-detail/img-01.jpg') }}" alt="image description">
+                                        <div class="tg-section-heading">
+                                            <h2>Description du Match</h2>
+                                        </div>
+                                        <p> {{ description }}</p>
+                                      <div id="tg-playerslider" class="tg-playerslider tg-haslayout">
+                                          <div class="tg-section-heading">
+                                              <h2>Description du Stade</h2>
+                                          </div>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <figure><img src="{{ asset('images/player-detail/img-02.jpg') }}" alt="image description"></figure>
+                                                </div>
+
+                                            </div>
+
+                                          <div class="tg-section-heading"><h2>{{ nomStade}}</h2></div>
+                                          <div id="tg-pointstable-slider" class="tg-pointstable-slider">
+                                              <div class="swiper-wrapper">
+                                                  <div class="swiper-slide">
+                                                      <div class="tg-pointtable">
+                                                          <div class="tg-box">Adresse</div>
+                                                          <div class="tg-box">{{ adresse }}</div>
+
+                                                      </div>
+                                                      <div class="tg-pointtable">
+                                                          <div class="tg-box">Ville</div>
+                                                          <div class="tg-box">{{ ville }}</div>
+
+                                                      </div>
+                                                      <div class="tg-pointtable">
+                                                          <div class="tg-box">Capacite</div>
+                                                          <div class="tg-box">{{ cap }}</div>
+
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12">
+                        <aside id="tg-sidebar" class="tg-sidebar">
+                            <div class="tg-widget tg-search">
+                                <form class="form-search">
+                                    <fieldset>
+                                        <input type="search" placeholder="Search Here" class="form-control">
+                                        <button type="submit"><i class="fa fa-search" onclick="filterSelection('all')"></i></button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="tg-widget tg-catagories-widget">
+                                <h3>catagories</h3>
+                                <ul>
+                                    <li>
+                                        <a href="#"><em>Match Terminé</em><i>{{ nbMatchT }}</i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><em>Match Organisé</em><i>{{ nbMatchO }}</i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><em>Match En Cours</em><i>{{ nbMatchE }}</i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><em>Vote</em><i>{{ a }}</i></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   <!-- <footer id="tg-footer" class="tg-footer tg-haslayout">
+        <div class="tg-haslayout tg-footerinfobox">
+            <div class="tg-bgboxone"></div>
+            <div class="tg-bgboxtwo"></div>
+            <div class="tg-footerinfo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="tg-footercol">
+                                <div class="tg-posttitle">
+                                    <h3>signup newsletter</h3>
+                                </div>
+                                <div class="tg-description">
+                                    <p>Adipisicing elit, sed do eiusmod tempor incidunta utiai labore et dolore magna si aliqua quis.</p>
+                                </div>
+                                <form class="tg-form-newsletter">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="email" placeholder="Email">
+                                        </div>
+                                        <button class="tg-btn" type="submit">signup</button>
+                                    </fieldset>
+                                </form>
+                                <div class="tg-posttitle">
+                                    <h3>popular tags</h3>
+                                </div>
+                                <div class="tg-tags">
+                                    <a class="tg-tag" href="#">fashion</a>
+                                    <a class="tg-tag" href="#">travel</a>
+                                    <a class="tg-tag" href="#">blog</a>
+                                    <a class="tg-tag" href="#">sports</a>
+                                    <a class="tg-tag" href="#">magazine</a>
+                                    <a class="tg-tag" href="#">ui</a>
+                                    <a class="tg-tag" href="#">tech</a>
+                                    <a class="tg-tag" href="#">fun time</a>
+                                    <a class="tg-tag" href="#">soccer</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="tg-footercol">
+                                <div class="tg-posttitle">
+                                    <h3>Top products</h3>
+                                </div>
+                                <div class="tg-toprated">
+                                    <ul>
+                                        <li>
+                                            <figure>
+                                                <a href="#">
+                                                    <img src="images/thumbnails/img-04.jpg" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-productcontent">
+                                                <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                                                <span class="tg-price">Price: $67</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <figure>
+                                                <a href="#">
+                                                    <img src="images/thumbnails/img-05.jpg" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-productcontent">
+                                                <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                                                <span class="tg-price">Price: $67</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <figure>
+                                                <a href="#">
+                                                    <img src="images/thumbnails/img-06.jpg" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-productcontent">
+                                                <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                                                <span class="tg-price">Price: $67</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <figure>
+                                                <a href="#">
+                                                    <img src="images/thumbnails/img-07.jpg" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-productcontent">
+                                                <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                                                <span class="tg-price">Price: $67</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="tg-footercol">
+                                <div class="tg-haslayout">
+                                    <strong class="tg-logo">
+                                        <a href="#">
+                                            <img src="images/logo2.png" alt="image description">
+                                        </a>
+                                    </strong>
+                                </div>
+                                <div class="tg-description">
+                                    <p>Consectetur adipisicing elit sedtado eiusmod dunt ut labore et dolore magna aliqua enim minim veniami quis nostrud.</p>
+                                </div>
+                                <ul class="tg-contactinfo">
+                                    <li>
+                                        <i class="fa fa-home"></i>
+                                        <address>123 Eccles Old Road, New Salford Road London, Uk, M6 7AF</address>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope-o"></i>
+                                        <a href="info%40domain.html">info@domain.com</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        <span>+44 123 456 788 - 9</span>
+                                    </li>
+                                </ul>
+                                <div class="tg-haslayout">
+                                    <a class="tg-btn" href="#">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tg-footerbar">
+            <div class="container">
+                <span class="tg-copyright"><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span>
+                <nav class="tg-footernav">
+                    <ul>
+                        <li><a href="#">Main</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Buy Tickets</a></li>
+                        <li><a href="#">Match Results</a></li>
+                        <li><a href="#">Upcoming Matches</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>-->
+
+</div>
+
+<div class="tg-searchbox">
+    <a id="tg-close-search" class="tg-close-search" href="javascript:void(0)"><span class="fa fa-close"></span></a>
+    <div class="tg-searcharea">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <form class="tg-form-search">
+                        <fieldset>
+                            <input type="search" class="form-control" placeholder="keyword">
+                            <i class="icon-icon_search2"></i>
+                        </fieldset>
+                    </form>
+                    <p>Start typing and press Enter to search</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="js/vendor/jquery-library.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/customScrollbar.min.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script src="js/isotope.pkgd.js"></script>
+<script src="js/prettyPhoto.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/countTo.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+
+</html>

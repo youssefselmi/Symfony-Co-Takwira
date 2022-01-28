@@ -1,0 +1,64 @@
+<!--************************************
+              // hedha l7achty byh :p
+        *************************************-->
+
+{{ form_start(form) }}
+<div class="tg-filterbale-nav option-set">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+		<div class="testbox2">
+			<br>
+			<label id="icon" for="name">
+				<i class="icon-envelope "></i>
+			</label>
+			<input type="text" name="name" id="name" placeholder="idjoueur #️⃣" disabled required/>
+			{{ form_widget(form.idjoueur, { 'attr':{ 'readonly': 'true'} })}}
+			<br>
+			<label id="icon" for="name">
+				<i class="icon-envelope "></i>
+			</label>
+			<input type="text" name="name" id="name" placeholder="Nom 👱" disabled required/>
+			{{ form_widget(form.nomjoueur, { 'attr':{ 'readonly': 'true'} })}}
+			<label id="icon" for="name">
+				<i class="icon-user"></i>
+			</label>
+			<input type="text" name="name" id="name" placeholder="Prenom 👪" disabled required/>
+			{{ form_widget(form.prenomjoueur, { 'attr':{ 'readonly': 'true'} })}}
+			<br>
+			<label id="icon" for="name">
+				<i class="icon-shield"></i>
+			</label>
+			<input type="text" name="name" id="name" placeholder="Email 📧" disabled required/>
+			{{ form_widget(form.emailjoueur, { 'attr':{ 'readonly': 'true'} })}}
+			<label id="icon" for="name">
+				<i class="icon-envelope "></i>
+			</label>
+			<input  type="text" name="name" id="name" placeholder="Numero ☎️" disabled required/>
+			{{ form_widget(form.tljoueur, { 'attr':{ 'readonly': 'true'} })}}
+			<br>
+          <a style="color:black">Sujet Reclamation 🤔❓</a>
+           <br>
+			<label id="icon" for="name">
+				<i class="icon-envelope "></i>
+			</label>
+			{{ form_widget(form.sujetrec)}}
+			<br>
+
+			<label id="icon" for="name">
+				<i class="icon-envelope "></i>
+			</label>
+			 {{ form_widget(form.nomprenomcoach)}} 
+			<br>
+			<a style="color:black">Description Reclamation 📝</a>
+			<br>
+			{{ form_widget(form.descriptionrec)}}
+			<br>
+			<br>
+
+			{{ form_widget(form.imgrec) }}
+			<br>
+
+			<button class="tg-btn ">{{ button_label|default('Ajouter') }}</button>
+		</div>
+</div>
+{{ form_end(form) }}

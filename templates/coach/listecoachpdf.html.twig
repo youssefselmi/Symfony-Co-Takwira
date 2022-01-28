@@ -1,0 +1,93 @@
+
+{% block body %}
+
+
+<h1 style="text-align: center"> Liste des Coahes </h1>
+<br>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 2px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #4c7aaf;
+            color: yellow;
+        }
+    </style>
+</head>
+
+
+
+<table border ="1" id="customers" width="60%" height="120" >
+    <tr>
+
+        <th scope="row">IdCoach</th>
+        <th scope="row">NomCoach</th>
+        <th scope="row">PrenomCoach</th>
+        <th scope="row">DateNaissance</th>
+        <th scope="row">Grade</th>
+        <th scope="row">DateFinContrat</th>
+        <th scope="row">AdresseMail</th>
+        <th scope="row">Salaire</th>
+        <th scope="row">NbTropheLocaux</th>
+        <th scope="row">NbTropheInternationaux</th>
+        <th scope="row">FormationPrefere</th>
+        <th scope="row">ImageFormation</th>
+        <th scope="row">ImageCoach</th>
+        <th scope="row">Age</th>
+        <th scope="row">MdpCoach</th>
+
+
+
+    </tr>
+    <tbody id="all">
+    {% for coach in Coach %}
+        <tr>
+            <td>{{ coach.idCoach }}</td>
+            <td>{{ coach.nomCoach }}</td>
+            <td>{{ coach.prenomCoach }}</td>
+            <td>{{ coach.dateNaissance ? coach.dateNaissance|date('Y-m-d') : '' }}</td>
+            <td>{{ coach.grade }}</td>
+            <td>{{ coach.dateFinContrat ? coach.dateFinContrat|date('Y-m-d') : '' }}</td>
+            <td>{{ coach.adresseMail }}</td>
+            <td>{{ coach.salaire }}</td>
+            <td>{{ coach.nbTropheLocaux }}</td>
+            <td>{{ coach.nbTropheInternationaux }}</td>
+            <td>{{ coach.formationPrefere }}</td>
+            <td> <img src="{{ asset('uploads/images/' ~ coach.imageFormation) }}" alt="" style="width: 100px;height:100px"> </td>
+            <td> <img src="{{ asset('uploads/images/' ~ coach.imageCoach) }}" alt="" style="width: 100px;height:100px"> </td>
+
+
+            <td>{{ coach.age }}</td>
+            <td>{{ coach.mdpCoach }}</td>
+
+        </tr>
+
+
+    {%endfor%}
+
+
+
+
+    {% endblock %}
+

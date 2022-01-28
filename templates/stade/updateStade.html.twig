@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Co-Takwira
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+
+    <style>
+        #mapid { height: 180px; }
+    </style>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="/path/to/jquery.ui.addresspicker.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/dist/typeahead.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead-addresspicker/0.1.4/typeahead-addresspicker.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+    <style>
+        #map {
+            float:right;
+            width: 490px;
+            height: 500px;
+            border: 1px solid #DDD;
+        }
+        pre.response {
+            float:left;
+            width: 430px;
+            height: 400px;
+            border: 1px solid #DDD;
+            font-size: 12px;
+            overflow: scroll;
+        }
+        .address-panel {
+            float:left;
+            width: 430px;
+
+        }
+
+
+    </style>
+    <style>
+        #detailsMap{
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body class="">
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+
+        <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                Co-Takwira
+            </a></div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item active  ">
+                    <a class="nav-link" href="{{ path('template') }}">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ path('template_match') }}">
+                        <i class="material-icons">bubble_chart</i>
+                        <p> Mes Matchs</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ path('template_stade') }}">
+                        <i class="material-icons">bubble_chart</i>
+                        <p> Mes Stades</p>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:;">Stades</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end">
+                   <!-- <form class="navbar-form">
+                        <div class="input-group no-border">
+                            <input type="text" value="" class="form-control" placeholder="Search...">
+                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
+                    </form>-->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:;">
+                                <i class="material-icons">dashboard</i>
+                                <p class="d-lg-none d-md-block">
+                                    Stats
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">notifications</i>
+                                <span class="notification">5</span>
+                                <p class="d-lg-none d-md-block">
+                                    Some Actions
+                                </p>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                                <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                                <a class="dropdown-item" href="#">Another Notification</a>
+                                <a class="dropdown-item" href="#">Another One</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">person</i>
+                                <p class="d-lg-none d-md-block">
+                                    Account
+                                </p>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="#">Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Log out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Modifier le stade</h4>
+                                <p class="card-category">Compléter</p>
+                            </div>
+                            <div class="card-body">
+
+                                {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}
+                                <div class="row">
+
+
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating"> {{ form_label(f.nomStade) }}</label>
+                                            {{ form_widget(f.nomStade,{'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(f.nomStade) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating"> {{ form_label(f.ville) }}</label>
+                                            {{ form_widget(f.ville,{'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(f.ville) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating"> {{ form_label(f.adresse) }}</label>
+                                            {{ form_widget(f.adresse,{'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(f.adresse) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating"> {{ form_label(f.capacite) }}</label>
+                                            {{ form_widget(f.capacite,{'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <input type="submit" class="btn btn-primary pull-right" value="Enregistrer les modifications">
+                                {{ form_end(f) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+
+                            <div id="detailsMap"></div>
+                            <div>
+                                <label for="adresse" class="">Adresse</label>
+                                <input type="text" name="adresse" id="adresse" class="form-control">
+                            </div>
+                            <div>
+                                <label for="lat">Latitude</label>
+                                <input type="text" name="lat" id="lat" readonly class="form-control">
+                            </div>
+                            <div>
+                                <label for="lon">Longitude</label>
+                                <input type="text" name="lon" id="lon" readonly class="form-control">
+                            </div>
+                            <div>
+                                <label for="cp">Code postal</label>
+                                <input type="text" name="cp" id="cp">
+                            </div>
+                            <div>
+                                <label for="ville">Ville</label>
+                                <input type="text" name="ville" id="ville">
+                            </div>
+
+                            <!--  <div id="mapid"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <!--  <footer class="footer">
+            <div class="container-fluid">
+                <nav class="float-left">
+                    <ul>
+                        <li>
+                            <a href="">
+                                Co-Takwira
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://creative-tim.com/presentation">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                                Blog
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+        </footer>-->
+    </div>
+</div>
+<script src="../bower_components/typeahead.js/dist/bloodhound.js"></script>
+<script src="../bower_components/typeahead.js/dist/typeahead.jquery.js"></script>
+
+<script>
+    /*  var lat = 48.852969;
+      var lon = 2.349903;
+      var mymap= null;
+      var villes = {
+          "Paris": { "lat": 48.852969, "lon": 2.349903 },
+          "Brest": { "lat": 48.383, "lon": -4.500 },
+          "Quimper": { "lat": 48.000, "lon": -4.100 },
+          "Bayonne": { "lat": 43.500, "lon": -1.467 }
+      };
+      function initMap() {
+          mymap = L.map('mapid').setView([lat, lon], 11);
+          L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+
+              attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+              minZoom: 1,
+              maxZoom: 20
+          }).addTo(mymap);
+          for (ville in villes) {
+              var marker = L.marker([villes[ville].lat, villes[ville].lon]).addTo(mymap);
+              marker.bindPopup(ville);
+          }
+
+      }*/
+    /* window.onload = function(){
+        // initMap();
+         let mymap
+         mymap = L.map('detailsMap').setView([48.852969, 2.349903], 11)
+         L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
+             attribution: 'Carte fournie par Wikimedia',
+             minZoom: 1,
+             maxZoom: 20
+         }).addTo(mymap)
+     };*/
+    let mymap,marqueur // Variable qui permettra de stocker la carte
+
+    // On attend que le DOM soit chargé
+    window.onload = () => {
+        // Nous initialisons la carte et nous la centrons sur Paris
+        mymap = L.map('detailsMap').setView([48.852969, 2.349903], 11)
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+
+            attribution: 'Carte fournie par Wikimedia',
+            minZoom: 1,
+            maxZoom: 20
+        }).addTo(mymap)
+        mymap.on('click', mapClickListen)
+        document.querySelector("#ville").addEventListener("blur",getCity)
+    }
+
+    function mapClickListen(e) {
+        // console.log(e);
+        // On récupère les coordonnées du clic
+        let pos = e.latlng
+
+        // On crée un marqueur
+        addMarker(pos)
+
+        // On affiche les coordonnées dans le formulaire
+        document.querySelector("#lat").value=pos.lat
+        document.querySelector("#lon").value=pos.lng
+    }
+
+    function addMarker(pos){
+        // On vérifie si le marqueur existe déjà
+        if (marqueur != undefined) {
+            // Si oui, on le retire
+            mymap.removeLayer(marqueur);
+        }
+
+        // On crée le marqueur aux coordonnées "pos"
+        marqueur = L.marker(
+            pos, {
+                // On rend le marqueur déplaçable
+                draggable: true
+            }
+        )
+        // marqueur = L.marker(pos)
+
+        // On écoute le glisser/déposer et on met à jour les coordonnées
+        marqueur.on('dragend', function(e) {
+            pos = e.target.getLatLng();
+            document.querySelector("#lat").value=pos.lat;
+            document.querySelector("#lon").value=pos.lng;
+        });
+
+        // On ajoute le marqueur
+        marqueur.addTo(mymap)
+    }
+    function getCity(){
+        // On "fabrique" l'adresse complète (des vérifications préalables seront nécessaires)
+
+        let adresse = document.querySelector("#adresse").value + ", " + document.querySelector("#cp").value+ " " + document.querySelector("#ville").value;
+//console.log(adresse)
+
+
+        // On initialise la requête Ajax
+        const xmlhttp = new XMLHttpRequest
+
+        // On détecte les changements d'état de la requête
+        xmlhttp.onreadystatechange = () => {
+            // Si la requête est terminée
+            if(xmlhttp.readyState == 4){
+                // Si nous avons une réponse
+                if(xmlhttp.status == 200){
+                    // On récupère la réponse
+                    let response = JSON.parse(xmlhttp.response)
+
+                    // On récupère la latitude et la longitude
+                    let lat = response[0]['lat']
+                    let lon = response[0]['lon']
+
+                    // On écrit les valeurs dans le formulaire
+                    document.querySelector("#lat").value= lat;
+                    document.querySelector("#lon").value= lon;
+
+                    // On crée le marqueur
+                    pos = [lat, lon];
+                    addMarker(pos);
+
+                    // On centre la carte sur l'adresse
+                    mymap.setView(pos, 11);
+                }
+            }
+        }
+
+        // On ouvre la requête
+        xmlhttp.open('get', `https://nominatim.openstreetmap.org/search?q=${adresse}&format=json&addressdetails=1&limit=1&polygon_svg=1`)
+
+        // On envoie la requête
+        xmlhttp.send();
+
+    }
+
+
+</script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+<script>
+
+    let mymap,marqueur // Variable qui permettra de stocker la carte
+
+    // On attend que le DOM soit chargé
+    window.onload = () => {
+        // Nous initialisons la carte et nous la centrons sur Paris
+        mymap = L.map('detailsMap').setView([48.852969, 2.349903], 11)
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+
+            attribution: 'Carte fournie par Wikimedia',
+            minZoom: 1,
+            maxZoom: 20
+        }).addTo(mymap)
+        mymap.on('click', mapClickListen)
+    }
+
+    function mapClickListen(e) {
+        // console.log(e);
+        // On récupère les coordonnées du clic
+        let pos = e.latlng
+
+        // On crée un marqueur
+        addMarker(pos)
+
+        // On affiche les coordonnées dans le formulaire
+        document.querySelector("#lat").value=pos.lat
+        document.querySelector("#lon").value=pos.lng
+    }
+
+    function addMarker(pos){
+        // On vérifie si le marqueur existe déjà
+        if (marqueur != undefined) {
+            // Si oui, on le retire
+            mymap.removeLayer(marqueur);
+        }
+
+        // On crée le marqueur aux coordonnées "pos"
+        marqueur = L.marker(
+            pos, {
+                // On rend le marqueur déplaçable
+                draggable: true
+            }
+        )
+        // marqueur = L.marker(pos)
+
+        // On écoute le glisser/déposer et on met à jour les coordonnées
+        marqueur.on('dragend', function(e) {
+            pos = e.target.getLatLng();
+            document.querySelector("#lat").value=pos.lat;
+            document.querySelector("#lon").value=pos.lng;
+        });
+
+        // On ajoute le marqueur
+        marqueur.addTo(mymap)
+    }
+
+    function getCity(){
+        // On "fabrique" l'adresse complète (des vérifications préalables seront nécessaires)
+        let adresse = document.querySelector("#adresse").value + ", " + document.querySelector("#cp").value+ " " + document.querySelector("#ville").value;
+
+        // On initialise la requête Ajax
+        const xmlhttp = new XMLHttpRequest
+
+        // On détecte les changements d'état de la requête
+        xmlhttp.onreadystatechange = () => {
+            // Si la requête est terminée
+            if(xmlhttp.readyState == 4){
+                // Si nous avons une réponse
+                if(xmlhttp.status == 200){
+                    // On récupère la réponse
+                    let response = JSON.parse(xmlhttp.response)
+
+                    // On récupère la latitude et la longitude
+                    let lat = response[0]['lat']
+                    let lon = response[0]['lon']
+
+                    // On écrit les valeurs dans le formulaire
+                    document.querySelector("#lat").value= lat;
+                    document.querySelector("#lon").value= lon;
+
+                    // On crée le marqueur
+                    pos = [lat, lon];
+                    addMarker(pos);
+
+                    // On centre la carte sur l'adresse
+                    mymap.setView(pos, 11);
+                }
+            }
+        }
+
+        // On ouvre la requête
+        xmlhttp.open('get', `https://nominatim.openstreetmap.org/search?q=${adresse}&format=json&addressdetails=1&limit=1&polygon_svg=1`)
+
+        // On envoie la requête
+        xmlhttp.send();
+
+    }
+
+
+</script>
+
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+<!--   Core JS Files   -->
+<script src="../assets/js/core/jquery.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!-- Plugin for the momentJs  -->
+<script src="../assets/js/plugins/moment.min.js"></script>
+<!--  Plugin for Sweet Alert -->
+<script src="../assets/js/plugins/sweetalert2.js"></script>
+<!-- Forms Validations Plugin -->
+<script src="../assets/js/plugins/jquery.validate.min.js"></script>
+<!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+<script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+<!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+<script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+<script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+<script src="../assets/js/plugins/fullcalendar.min.js"></script>
+<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+<script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="../assets/js/plugins/nouislider.min.js"></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<!-- Library for adding dinamically elements -->
+<script src="../assets/js/plugins/arrive.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chartist JS -->
+<script src="../assets/js/plugins/chartist.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/demo/demo.js"></script>
+<script>
+    $(document).ready(function() {
+        $().ready(function() {
+            $sidebar = $('.sidebar');
+
+            $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+            $full_page = $('.full-page');
+
+            $sidebar_responsive = $('body > .navbar-collapse');
+
+            window_width = $(window).width();
+
+            fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+            if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                    $('.fixed-plugin .dropdown').addClass('open');
+                }
+
+            }
+
+            $('.fixed-plugin a').click(function(event) {
+                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                if ($(this).hasClass('switch-trigger')) {
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    } else if (window.event) {
+                        window.event.cancelBubble = true;
+                    }
+                }
+            });
+
+            $('.fixed-plugin .active-color span').click(function() {
+                $full_page_background = $('.full-page-background');
+
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+
+                var new_color = $(this).data('color');
+
+                if ($sidebar.length != 0) {
+                    $sidebar.attr('data-color', new_color);
+                }
+
+                if ($full_page.length != 0) {
+                    $full_page.attr('filter-color', new_color);
+                }
+
+                if ($sidebar_responsive.length != 0) {
+                    $sidebar_responsive.attr('data-color', new_color);
+                }
+            });
+
+            $('.fixed-plugin .background-color .badge').click(function() {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+
+                var new_color = $(this).data('background-color');
+
+                if ($sidebar.length != 0) {
+                    $sidebar.attr('data-background-color', new_color);
+                }
+            });
+
+            $('.fixed-plugin .img-holder').click(function() {
+                $full_page_background = $('.full-page-background');
+
+                $(this).parent('li').siblings().removeClass('active');
+                $(this).parent('li').addClass('active');
+
+
+                var new_image = $(this).find("img").attr('src');
+
+                if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                    $sidebar_img_container.fadeOut('fast', function() {
+                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                        $sidebar_img_container.fadeIn('fast');
+                    });
+                }
+
+                if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                    $full_page_background.fadeOut('fast', function() {
+                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        $full_page_background.fadeIn('fast');
+                    });
+                }
+
+                if ($('.switch-sidebar-image input:checked').length == 0) {
+                    var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                    $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                    $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                }
+
+                if ($sidebar_responsive.length != 0) {
+                    $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                }
+            });
+
+            $('.switch-sidebar-image input').change(function() {
+                $full_page_background = $('.full-page-background');
+
+                $input = $(this);
+
+                if ($input.is(':checked')) {
+                    if ($sidebar_img_container.length != 0) {
+                        $sidebar_img_container.fadeIn('fast');
+                        $sidebar.attr('data-image', '#');
+                    }
+
+                    if ($full_page_background.length != 0) {
+                        $full_page_background.fadeIn('fast');
+                        $full_page.attr('data-image', '#');
+                    }
+
+                    background_image = true;
+                } else {
+                    if ($sidebar_img_container.length != 0) {
+                        $sidebar.removeAttr('data-image');
+                        $sidebar_img_container.fadeOut('fast');
+                    }
+
+                    if ($full_page_background.length != 0) {
+                        $full_page.removeAttr('data-image', '#');
+                        $full_page_background.fadeOut('fast');
+                    }
+
+                    background_image = false;
+                }
+            });
+
+            $('.switch-sidebar-mini input').change(function() {
+                $body = $('body');
+
+                $input = $(this);
+
+                if (md.misc.sidebar_mini_active == true) {
+                    $('body').removeClass('sidebar-mini');
+                    md.misc.sidebar_mini_active = false;
+
+                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                } else {
+
+                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                    setTimeout(function() {
+                        $('body').addClass('sidebar-mini');
+
+                        md.misc.sidebar_mini_active = true;
+                    }, 300);
+                }
+
+                // we simulate the window Resize so the charts will get updated in realtime.
+                var simulateWindowResize = setInterval(function() {
+                    window.dispatchEvent(new Event('resize'));
+                }, 180);
+
+                // we stop the simulation of Window Resize after the animations are completed
+                setTimeout(function() {
+                    clearInterval(simulateWindowResize);
+                }, 1000);
+
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

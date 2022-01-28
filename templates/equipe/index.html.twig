@@ -1,0 +1,51 @@
+{% extends 'template/match.html.twig' %}
+
+{% block title %}Equipe index{% endblock %}
+
+{% block body %}
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h3 class="card-title ">Liste des equipes </h3>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+
+    <table class="table" id="mydatatable">
+        <thead>
+            <tr>
+                <th>IdE</th>
+                <th>NomEquipe</th>
+                <th>IdCoach</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipe in equipes %}
+            <tr>
+                <td>{{ equipe.idE }}</td>
+                <td>{{ equipe.nomEquipe }}</td>
+                <td>{{ equipe.idCoach.getNomCoach()}}</td>
+                <td>
+                    <a href="{{ path('equipe_show', {'idE': equipe.idE}) }}">show</a>
+                    <a href="{{ path('equipe_edit', {'idE': equipe.idE}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('equipe_new') }}">Create new</a>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function ()
+        {
+
+            $('#mydatatable').DataTable();
+        });
+    </script>
+{% endblock %}
